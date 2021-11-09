@@ -1,14 +1,12 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdk ProjectConfig.compileSdkVersion
+    compileSdkVersion ProjectConfig.compileSdkVersion
 
     defaultConfig {
-        minSdk ProjectConfig.minSdkVersion
-        targetSdk ProjectConfig.targetSdkVersion
+        minSdkVersion ProjectConfig.minSdkVersion
+        targetSdkVersion ProjectConfig.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -21,12 +19,11 @@ android {
         }
     }
     compileOptions {
-        // Sets Java compatibility to Java 11
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
 }
 
