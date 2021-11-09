@@ -1,0 +1,10 @@
+apply plugin: 'com.github.panpf.bintray-publish'
+
+publish {
+    userOrg = USER_ORG
+    groupId = ARTIFACT_GROUP
+    artifactId = ARTIFACT_NAME
+    publishVersion = ARTIFACT_VERSION
+    desc = 'Pirvte Library'
+    website = 'https://github.com/cloudthink-nj/library'
+}
