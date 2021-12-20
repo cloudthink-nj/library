@@ -1,0 +1,2 @@
+-dontwarn com.ibroadlink.library.socket.**
+-keep class com.ibroadlink.library.socket.**{*;}

@@ -6,10 +6,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
 import android.os.RemoteException
-import com.blankj.utilcode.util.LogUtils
-import com.blankj.utilcode.util.ServiceUtils
-import com.blankj.utilcode.util.ThreadUtils
-import com.blankj.utilcode.util.Utils
+import com.blankj.utilcode.util.*
 import com.ibroadlink.library.aidl.IAidlCallback
 import com.ibroadlink.library.aidl.IAidlService
 
@@ -39,6 +36,7 @@ abstract class BLAidlClient {
                     addCallback(serviceCallback)
                     //给binder设置死忙代理，当Binder死忙时就可以收到通知
                     service.linkToDeath(mDeathRecipient, 0)
+                    onBinderConnected()
                 } catch (e: Exception) {
                     LogUtils.e(e)
                 }
@@ -71,8 +69,10 @@ abstract class BLAidlClient {
         }
     }
 
-    fun bindService(intent: Intent) {
-        if (mAidlBinder == null) {
+    fun bindService(action: String, packageName: String) {
+        if (mAidlBinder == null && AppUtils.isAppInstalled(packageName)) {
+            val intent = Intent(action)
+            intent.setPackage(packageName)
             Utils.getApp().bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE)
         }
     }
@@ -88,4 +88,6 @@ abstract class BLAidlClient {
     abstract fun onHandleAction(action: String, data: String)
 
     abstract fun onBinderDied()
+
+    abstract fun onBinderConnected()
 }
