@@ -19,11 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
--dontwarn com.ibroadlink.library.aidlink.adapter.**
--keep class * implements com.ibroadlink.library.aidlink.SuperParcelable {
-    public void readFromParcel(android.os.Parcel);
-}
--keep @com.ibroadlink.library.aidlink.annotation.RemoteInterface class * {
-    <methods>;
-}
