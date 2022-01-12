@@ -6,6 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.ibroadlink.library.base.extend.getVmClazz
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
 /**
  * @Author: Broadlink lvzhaoyang
@@ -13,7 +16,9 @@ import com.ibroadlink.library.base.extend.getVmClazz
  * @Email: zhaoyang.lv@broadlink.com.cn
  * @Description: 包含ViewModel 和Databind ViewModelActivity基类，把ViewModel 和Databind注入进来了
  */
-abstract class DataBindingBaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppCompatActivity() {
+abstract class DataBindingBaseActivity<VM : BaseViewModel, DB : ViewDataBinding> :
+    AppCompatActivity(),
+    CoroutineScope by MainScope() {
 
     lateinit var mDataBind: DB
 
@@ -71,8 +76,8 @@ abstract class DataBindingBaseActivity<VM : BaseViewModel, DB : ViewDataBinding>
      * 将非该Activity绑定的ViewModel添加 loading回调 防止出现请求时不显示 loading 弹窗bug
      * @param viewModels Array<out BaseViewModel>
      */
-    protected fun addLoadingObserve(vararg viewModels: BaseViewModel){
-        viewModels.forEach {viewModel ->
+    protected fun addLoadingObserve(vararg viewModels: BaseViewModel) {
+        viewModels.forEach { viewModel ->
             //显示弹窗
             viewModel.loadingChange.showDialog.observe(this, {
                 showLoading(it)
@@ -82,5 +87,10 @@ abstract class DataBindingBaseActivity<VM : BaseViewModel, DB : ViewDataBinding>
                 dismissLoading()
             })
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
     }
 }

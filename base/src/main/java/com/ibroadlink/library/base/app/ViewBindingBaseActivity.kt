@@ -3,6 +3,9 @@ package com.ibroadlink.library.base.app
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
 /**
  * @Author: Broadlink lvzhaoyang
@@ -10,7 +13,8 @@ import androidx.viewbinding.ViewBinding
  * @Email: zhaoyang.lv@broadlink.com.cn
  * @Description: ViewBindingBaseActivity
  */
-abstract class ViewBindingBaseActivity<T : ViewBinding> : AppCompatActivity() {
+abstract class ViewBindingBaseActivity<T : ViewBinding> : AppCompatActivity(),
+    CoroutineScope by MainScope() {
 
     private lateinit var _binding: T
     protected val mBinding get() = _binding
@@ -29,4 +33,9 @@ abstract class ViewBindingBaseActivity<T : ViewBinding> : AppCompatActivity() {
     }
 
     protected abstract fun getViewBinding(): T
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
+    }
 }

@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.ThreadUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
 /**
  * @Author: Broadlink lvzhaoyang
@@ -17,7 +20,8 @@ import com.blankj.utilcode.util.ThreadUtils
  * @Email: zhaoyang.lv@broadlink.com.cn
  * @Description: ViewBindingBaseFragment
  */
-abstract class ViewBindingBaseFragment<T : ViewBinding> : Fragment() {
+abstract class ViewBindingBaseFragment<T : ViewBinding> : Fragment(),
+    CoroutineScope by MainScope() {
     private lateinit var _binding: T
     protected val mBinding get() = _binding;
 
@@ -93,5 +97,10 @@ abstract class ViewBindingBaseFragment<T : ViewBinding> : Fragment() {
      */
     open fun lazyLoadTime(): Long {
         return 300
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        cancel()
     }
 }

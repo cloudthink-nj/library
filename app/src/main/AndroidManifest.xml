@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".RemoteService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.example.andlinker.REMOTE_SERVICE_ACTION" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

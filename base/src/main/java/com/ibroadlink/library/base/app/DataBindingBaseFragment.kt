@@ -13,6 +13,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import com.blankj.utilcode.util.ThreadUtils
 import com.ibroadlink.library.base.extend.getVmClazz
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
 /**
  * @Author: Broadlink lvzhaoyang
@@ -20,7 +23,8 @@ import com.ibroadlink.library.base.extend.getVmClazz
  * @Email: zhaoyang.lv@broadlink.com.cn
  * @Description: ViewModelFragment基类，自动把ViewModel注入Fragment和Databind注入进来了
  */
-abstract class DataBindingBaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
+abstract class DataBindingBaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment(),
+    CoroutineScope by MainScope() {
 
     var mDataBind: DB? = null
 
@@ -151,6 +155,7 @@ abstract class DataBindingBaseFragment<VM : BaseViewModel, DB : ViewDataBinding>
 
     override fun onDestroyView() {
         super.onDestroyView()
+        cancel()
         mDataBind?.unbind()
         mDataBind = null
     }

@@ -12,6 +12,7 @@ object LibraryDeps {
     const val AndroidJUnitRunner = "androidx.test.runner.AndroidJUnitRunner"
     const val AppCompat = "androidx.appcompat:appcompat:${Versions.AppCompat}"
     const val CoreKtx = "androidx.core:core-ktx:${Versions.CoreKtx}"
+    const val ReflectKtx = "org.jetbrains.kotlin:kotlin-reflect:${Versions.Kotlin}"
     const val ConstraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.ConstraintLayout}"
     const val TestExtJunit = "androidx.test.ext:junit:${Versions.TestExtJunit}"

@@ -11,4 +11,6 @@ interface IAidlService {
     void delCallback(IAidlCallback cb);
     //功能接口
     void requestAction(String action, String data);
+
+    List<Bitmap> getBitmap(String action, String data);
 }

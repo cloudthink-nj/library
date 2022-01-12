@@ -1,5 +1,7 @@
 package com.ibroadlink.library.aidl.server
 
+import android.graphics.Bitmap
+
 /**
  * @Author: Broadlink lvzhaoyang
  * @CreateDate: 2021/6/3 14:26
@@ -8,4 +10,6 @@ package com.ibroadlink.library.aidl.server
  */
 interface IRequestInterface {
     fun requestAction(action: String, data: String?)
+
+    fun getBitmap(action: String, data: String?): List<Bitmap>
 }

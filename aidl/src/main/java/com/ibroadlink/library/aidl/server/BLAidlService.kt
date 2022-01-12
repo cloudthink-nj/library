@@ -1,6 +1,7 @@
 package com.ibroadlink.library.aidl.server
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.IBinder
 import com.blankj.utilcode.util.LogUtils
 import com.ibroadlink.library.base.app.CoroutineBaseService
@@ -18,13 +19,11 @@ abstract class BLAidlService : CoroutineBaseService(), IRequestInterface {
         initImpl(AidlServiceImpl(this))
     }
 
-    override fun onBind(intent: Intent): IBinder = mBinderImpl
-
-    override fun requestAction(action: String, data: String?) {
-        onHandleAction(action, data)
+    override fun getBitmap(action: String, data: String?): List<Bitmap> {
+        return emptyList()
     }
 
-    abstract fun onHandleAction(action: String, data: String?)
+    override fun onBind(intent: Intent): IBinder = mBinderImpl
 
     companion object {
         lateinit var mBinderImpl: AidlServiceImpl

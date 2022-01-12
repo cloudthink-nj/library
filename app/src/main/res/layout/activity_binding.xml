@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_pid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get server pid" />
+
+    <Button
+        android:id="@+id/btn_basic_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Basic types"
+        app:layout_constraintTop_toBottomOf="@id/btn_pid" />
+
+    <Button
+        android:id="@+id/btn_call_adapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call adapter"
+        app:layout_constraintTop_toBottomOf="@id/btn_basic_types" />
+
+    <Button
+        android:id="@+id/btn_rxjava2_call_adapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RxJava2 call adapter"
+        app:layout_constraintTop_toBottomOf="@id/btn_call_adapter" />
+
+    <Button
+        android:id="@+id/btn_callback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Callback"
+        app:layout_constraintTop_toBottomOf="@id/btn_rxjava2_call_adapter" />
+
+    <Button
+        android:id="@+id/btn_directional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Directional tag"
+        app:layout_constraintTop_toBottomOf="@id/btn_callback" />
+
+    <Button
+        android:id="@+id/btn_oneway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oneway"
+        app:layout_constraintTop_toBottomOf="@id/btn_directional" />
+
+    <Button
+        android:id="@+id/btn_bitmap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bitmap"
+        app:layout_constraintTop_toBottomOf="@id/btn_oneway" />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
