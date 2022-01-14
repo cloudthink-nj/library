@@ -19,7 +19,8 @@ object BLRoomUtils {
     fun <T : RoomDatabase> getCoreDB(
         cls: Class<T>, dbName: String = "core.db",
         callback: RoomDatabase.Callback? = null,
-        migrations: Array<Migration>? = null
+        migrations: Array<Migration>? = null,
+        allowMainThread: Boolean = false
     ): T {
         val name = cls.name
         var database: RoomDatabase? = mDBEntityMap[name]
@@ -33,6 +34,9 @@ object BLRoomUtils {
             }
             if (callback != null) {
                 builder.addCallback(callback)
+            }
+            if (allowMainThread) {
+                builder.allowMainThreadQueries()
             }
             database = builder.build()
             mDBEntityMap[name] = database
