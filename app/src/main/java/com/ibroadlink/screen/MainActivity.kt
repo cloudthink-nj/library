@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.ibroadlink.library.aidlink.Aidlink
+import com.ibroadlink.library.aidlink.adapter.OriginalCallAdapterFactory
 import com.ibroadlink.library.aidlink.annotation.RemoteInterface
 import com.ibroadlink.library.base.app.ViewBindingBaseActivity
 import com.ibroadlink.library.base.extend.clickWithTrigger
@@ -23,12 +24,12 @@ class MainActivity : ViewBindingBaseActivity<ActivityBindingBinding>(), Aidlink.
 
     override fun initView(savedInstanceState: Bundle?) {
         Aidlink.enableLogger(true)
-        mLinker = Aidlink(
-            this,
-            packageName,
-            REMOTE_SERVICE_ACTION
-        )
-        mLinker.mBindCallback = this
+        mLinker = Aidlink.Builder(this)
+            .packageName(REMOTE_SERVICE_PKG)
+            .action(REMOTE_SERVICE_ACTION)
+            .addCallAdapterFactory(OriginalCallAdapterFactory.create()) // Basic
+            .build()
+        mLinker.setBindCallback(this)
         mLinker.registerObject(mRemoteCallback)
         mLinker.bind()
 
@@ -105,7 +106,7 @@ class MainActivity : ViewBindingBaseActivity<ActivityBindingBinding>(), Aidlink.
         super.onDestroy()
         mLinker.unRegisterObject(mRemoteCallback)
         mLinker.unbind()
-        mLinker.mBindCallback = null
+        mLinker.setBindCallback(null)
     }
 
     private val mRemoteCallback: IRemoteCallback = object : IRemoteCallback {
