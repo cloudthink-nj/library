@@ -9,7 +9,7 @@ import android.os.RemoteException;
  */
 final class AidlinkBinderImpl extends ITransfer.Stub implements AidlinkBinder {
     
-    private static final String TAG = "LinkerBinder";
+    private static final String TAG = "AidlinkBinder";
     private RemoteCallbackList<ICallback> mCallbackList;
     private Invoker mInvoker;
 

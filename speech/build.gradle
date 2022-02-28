@@ -30,6 +30,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.6.0'
-    api 'com.github.icloudthink.library:aidlink:0.1.1'
+    implementation LibraryDeps.CoreKtx
+    implementation project(":aidlink")
 }

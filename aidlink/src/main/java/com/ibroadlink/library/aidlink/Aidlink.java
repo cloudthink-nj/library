@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class Aidlink {
     
-    private static final String TAG = "AndLinker";
+    private static final String TAG = "Aidlink";
 
     private final Map<Method, ServiceMethod> serviceMethodCache = new ConcurrentHashMap<>();
     private ServiceConnection mServiceConnection;
