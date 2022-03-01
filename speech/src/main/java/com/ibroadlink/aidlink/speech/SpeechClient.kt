@@ -51,8 +51,8 @@ class SpeechClient @JvmOverloads constructor(
         Aidlink.enableLogger(enable)
     }
 
-    fun handleSkill(nativeApi: String?, data: String?): String {
-        return mService?.handleSkill(nativeApi, data) ?: ""
+    fun handleSkill(nativeApi: String?, data: String?) {
+        mService?.handleSkill(nativeApi, data)
     }
 
     fun querySkillVocabs() {
