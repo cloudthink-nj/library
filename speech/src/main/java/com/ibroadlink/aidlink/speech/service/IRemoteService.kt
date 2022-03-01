@@ -6,7 +6,7 @@ import com.ibroadlink.library.aidlink.annotation.RemoteInterface
 @RemoteInterface
 interface IRemoteService {
 
-    fun handleSkill(nativeApi: String?, data: String?): String?
+    fun handleSkill(nativeApi: String?, data: String?)
 
     fun querySkillVocabs()
 
