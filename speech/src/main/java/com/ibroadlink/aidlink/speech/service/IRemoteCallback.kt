@@ -8,6 +8,8 @@ interface IRemoteCallback {
 
     fun onUpdateVocabs(@In vocabsMap: Map<String, List<String>>)
 
+    fun onReplyResult(nativeApi: String, result: String)
+
     fun onServiceBind(packageName: String)
 
     fun onServiceUnBind(packageName: String)
