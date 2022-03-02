@@ -38,10 +38,6 @@ class SpeechClient @JvmOverloads constructor(
         }
 
         override fun onUnBind() {
-            mService?.setCallback(null)
-            mLinker.unRegisterObject(remoteCallback)
-            mLinker.unbind()
-            mLinker.setBindCallback(null)
             mService = null
             remoteCallback.onServiceUnBind(packageName)
         }
@@ -60,8 +56,6 @@ class SpeechClient @JvmOverloads constructor(
     }
 
     fun bindService() {
-        mLinker.setBindCallback(mBindCallback)
-        mLinker.registerObject(remoteCallback)
         mLinker.bind()
     }
 
@@ -71,5 +65,10 @@ class SpeechClient @JvmOverloads constructor(
         mLinker.unbind()
         mLinker.setBindCallback(null)
         mService = null
+    }
+
+    init {
+        mLinker.setBindCallback(mBindCallback)
+        mLinker.registerObject(remoteCallback)
     }
 }
