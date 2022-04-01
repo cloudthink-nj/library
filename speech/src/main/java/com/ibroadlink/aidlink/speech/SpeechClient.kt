@@ -55,6 +55,10 @@ class SpeechClient @JvmOverloads constructor(
         mService?.querySkillVocabs()
     }
 
+    fun getOauthToken() {
+        mService?.getOauthToken()
+    }
+
     fun bindService() {
         mLinker.bind()
     }
