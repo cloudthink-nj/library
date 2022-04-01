@@ -11,4 +11,6 @@ interface IRemoteService {
     fun querySkillVocabs()
 
     fun setCallback(@Callback callback: IRemoteCallback?)
+
+    fun getOauthToken()
 }

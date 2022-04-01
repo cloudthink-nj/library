@@ -13,4 +13,8 @@ interface IRemoteCallback {
     fun onServiceBind(packageName: String)
 
     fun onServiceUnBind(packageName: String)
+
+    fun onOauthToken(token: String, refreshToken: String, expiresIn: Long)
+
+    fun onRevokeOauth()
 }
