@@ -36,6 +36,7 @@ object LibraryDeps {
     const val Lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Lifecycle}"
     const val RoomKTX = "androidx.room:room-ktx:${Versions.Room}"
     const val RoomCompiler = "androidx.room:room-compiler:${Versions.Room}"
+    const val Navigation = "androidx.navigation:navigation-fragment-ktx:2.3.5"
 
     /**
      * 第三方相关依赖
