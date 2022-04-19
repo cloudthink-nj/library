@@ -19,6 +19,7 @@ object LibraryDeps {
     const val TestEspresso = "androidx.test.espresso:espresso-core:${Versions.TestEspresso}"
     const val MultiDex = "androidx.multidex:multidex:${Versions.MultiDex}"
     const val FragmentKtx = "androidx.fragment:fragment-ktx:${Versions.Fragment}"
+    const val FragmentTest ="androidx.fragment:fragment-testing:${Versions.Fragment}"
 
     /**
      * Android相关依赖

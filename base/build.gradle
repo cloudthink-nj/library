@@ -34,9 +34,9 @@ android {
 
 dependencies {
     api fileTree(dir: "libs", include: ["*.jar"])
-    testImplementation LibraryDeps.Junit
-    androidTestImplementation LibraryDeps.TestExtJunit
-    androidTestImplementation LibraryDeps.TestEspresso
+    testCompileOnly LibraryDeps.Junit
+    androidTestCompileOnly LibraryDeps.TestExtJunit
+    androidTestCompileOnly LibraryDeps.TestEspresso
 
     api LibraryDeps.CoreKtx
     api LibraryDeps.AppCompat
