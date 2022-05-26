@@ -35,6 +35,7 @@ object LibraryDeps {
     const val ViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Lifecycle}"
     const val LiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Lifecycle}"
     const val Lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Lifecycle}"
+    const val Service = "androidx.lifecycle:lifecycle-service:${Versions.Lifecycle}"
     const val RoomKTX = "androidx.room:room-ktx:${Versions.Room}"
     const val RoomCompiler = "androidx.room:room-compiler:${Versions.Room}"
     const val Navigation = "androidx.navigation:navigation-fragment-ktx:2.3.5"

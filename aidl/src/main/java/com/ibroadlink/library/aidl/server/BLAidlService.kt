@@ -3,8 +3,7 @@ package com.ibroadlink.library.aidl.server
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.IBinder
-import com.blankj.utilcode.util.LogUtils
-import com.ibroadlink.library.base.app.CoroutineBaseService
+import androidx.lifecycle.LifecycleService
 
 /**
  * @Author: Broadlink lvzhaoyang
@@ -12,7 +11,7 @@ import com.ibroadlink.library.base.app.CoroutineBaseService
  * @Email: zhaoyang.lv@broadlink.com.cn
  * @Description: AidlService
  */
-abstract class BLAidlService : CoroutineBaseService(), IRequestInterface {
+abstract class BLAidlService : LifecycleService(), IRequestInterface {
 
     override fun onCreate() {
         super.onCreate()
@@ -23,7 +22,10 @@ abstract class BLAidlService : CoroutineBaseService(), IRequestInterface {
         return emptyList()
     }
 
-    override fun onBind(intent: Intent): IBinder = mBinderImpl
+    override fun onBind(intent: Intent): IBinder {
+        super.onBind(intent)
+        return mBinderImpl
+    }
 
     companion object {
         lateinit var mBinderImpl: AidlServiceImpl

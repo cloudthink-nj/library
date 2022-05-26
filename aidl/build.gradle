@@ -32,4 +32,5 @@ dependencies {
     androidTestImplementation LibraryDeps.TestExtJunit
     androidTestImplementation LibraryDeps.TestEspresso
     compileOnly LibraryDeps.UtilCodex
+    compileOnly LibraryDeps.Service
 }
