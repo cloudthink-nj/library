@@ -31,5 +31,5 @@ dependencies {
     testImplementation LibraryDeps.Junit
     androidTestImplementation LibraryDeps.TestExtJunit
     androidTestImplementation LibraryDeps.TestEspresso
-    compileOnly(project(':base'))
+    compileOnly LibraryDeps.UtilCodex
 }
