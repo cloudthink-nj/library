@@ -135,6 +135,10 @@ public class BLUdpSocket {
                 Log.e("BLSocket", "无法接收UDP数据或者接收到的UDP数据为空");
                 continue;
             }
+            if ( mReceivePacket.getAddress() == null) {
+                Log.e("BLSocket", "UDP数据包InetAddress为空");
+                continue;
+            }
             String senderIP = mReceivePacket.getAddress().getHostAddress();
             if (senderIP != null) {
                 for (int i = 0; i < mReceivePacket.getLength(); i++) {
